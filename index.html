@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inkora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F6F2E9;
+    --paper-dim: #EFE9DB;
+    --ink: #1C1B1F;
+    --ink-soft: #4A4850;
+    --indigo: #3B3273;
+    --teal: #3F7C74;
+    --line: #D8D0BE;
+    --max: 1100px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.wordmark{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(246, 242, 233, 0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;max-width:var(--max);margin:0 auto;
+  }
+  .wordmark{font-size:22px;}
+  .wordmark span{color:var(--indigo);}
+  nav ul{list-style:none;display:flex;gap:32px;margin:0;padding:0;}
+  nav a{text-decoration:none;font-size:15px;color:var(--ink-soft);transition:color .2s;}
+  nav a:hover{color:var(--indigo);}
+  .nav-cta{
+    background:var(--ink);color:var(--paper);
+    padding:9px 20px;border-radius:3px;font-size:14px;
+    text-decoration:none;
+  }
+
+  /* Hero */
+  .hero{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;
+    align-items:center;
+    padding:96px 32px 80px;max-width:var(--max);margin:0 auto;
+  }
+  .hero h1{
+    font-size:clamp(38px,5vw,58px);
+    line-height:1.08;
+  }
+  .hero p.lede{
+    font-size:19px;color:var(--ink-soft);max-width:38ch;margin-top:22px;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:34px;align-items:center;}
+  .btn-primary{
+    background:var(--indigo);color:var(--paper);
+    padding:13px 26px;border-radius:3px;text-decoration:none;
+    font-size:15px;font-weight:500;transition:background .2s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:#2c2557;}
+  .btn-text{
+    text-decoration:none;color:var(--ink);font-size:15px;
+    border-bottom:1px solid var(--ink);padding-bottom:2px;
+  }
+  .hero-visual{position:relative;}
+  .hero-visual svg{width:100%;height:auto;overflow:visible;}
+  .print-reveal{
+    animation:printGrow 3s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  .laser-beam{
+    animation:beamMove 3s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  .laser-core{fill:#F2EFE6;}
+  .laser-glow{fill:var(--teal);filter:blur(6px);opacity:.85;}
+  @keyframes printGrow{
+    0%{width:0;}
+    100%{width:420px;}
+  }
+  @keyframes beamMove{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(420px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .print-reveal{animation:none;width:420px;}
+    .laser-beam{animation:none;opacity:0;}
+  }
+
+  /* Divider */
+  .wave-divider{display:block;width:100%;height:40px;margin:0;}
+  .wave-divider path{fill:var(--paper-dim);}
+
+  /* Section shared */
+  section{padding:80px 0;}
+  .section-head{max-width:52ch;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,36px);}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:17px;}
+
+  /* About / story */
+  .about{background:var(--paper-dim);}
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
+  }
+  .about-grid p{color:var(--ink-soft);margin-bottom:16px;}
+
+  /* Services - flowing list, not cards */
+  .service-list{border-top:1px solid var(--line);}
+  .service-row{
+    display:grid;grid-template-columns:220px 1fr;gap:32px;
+    padding:36px 0;border-bottom:1px solid var(--line);
+  }
+  .service-row h3{font-size:22px;color:var(--indigo);}
+  .service-row p{color:var(--ink-soft);margin:10px 0 0;max-width:56ch;}
+
+  /* Work / gallery placeholders */
+  .work{background:var(--paper-dim);}
+  .work-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .work-item{
+    aspect-ratio:4/3;background:var(--paper);
+    border:1px solid var(--line);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);font-size:14px;
+  }
+
+  /* Contact */
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+  }
+  .contact-grid p{color:var(--ink-soft);max-width:40ch;}
+  form{display:flex;flex-direction:column;gap:16px;margin-top:8px;}
+  input,textarea{
+    font-family:'Inter',sans-serif;font-size:15px;
+    padding:13px 14px;border:1px solid var(--line);
+    border-radius:3px;background:var(--paper);color:var(--ink);
+  }
+  input:focus,textarea:focus{
+    outline:2px solid var(--indigo);outline-offset:1px;
+  }
+  textarea{resize:vertical;min-height:110px;}
+  .contact-grid .btn-primary{border:none;cursor:pointer;align-self:flex-start;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px;text-align:left;
+  }
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:14px;color:var(--ink-soft);
+  }
+
+  @media (max-width:800px){
+    .hero{grid-template-columns:1fr;padding-top:64px;}
+    .hero-visual{order:-1;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr 1fr;}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <img src="/Users/muralidharan.jaganathan/Downloads/inkora-horizontal-navy-1200w.png" x="5" y="2" width="150" height="50"/>
+    <!--<a href="#" class="wordmark">Ink<span>ora</span></a> -->
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <!--<h1>Walls That Speak Your Brand</h1> -->
+    <h1>Transform Walls. Elevate Spaces.</h1>
+    <p class="lede">Premium wall murals and logo printing - From blank spaces to bold statement</p>
+    <p class="lede">From custom murals and business branding to floor graphics that leave a lasting impression.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a project</a>
+      <a href="#work" class="btn-text">See the work</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="printClip">
+          <rect class="print-reveal" x="0" y="0" width="0" height="300"/>
+        </clipPath>
+      </defs>
+
+      <!-- placeholder frame, always visible -->
+      <rect x="40" y="30" width="340" height="220" fill="none" stroke="var(--line)"/>
+
+      <!-- placeholder picture — replace with a real photo, e.g.:
+           <image href="your-photo.jpg" x="40" y="30" width="340" height="220" preserveAspectRatio="xMidYMid slice"/> -->
+      <g class="wall-picture" clip-path="url(#printClip)">
+        <image href="/Users/muralidharan.jaganathan/Downloads/429e0856-925c-44b9-bcce-687f03c9ecfa.JPG" x="40" y="30" width="360" height="250" preserveAspectRatio="xMidYMid slice"/>
+        <!--<rect x="40" y="30" width="340" height="220" fill="var(--paper)"/>
+        <circle cx="130" cy="95" r="22" fill="var(--indigo)" opacity=".85"/>
+        <path d="M40,220 L150,120 L210,175 L280,90 L380,220 Z" fill="var(--teal)" opacity=".8"/>
+        <path d="M40,220 L120,150 L170,190 L240,110 L380,220 Z" fill="var(--indigo)" opacity=".55"/> -->
+      </g>
+
+      <!-- scanning laser beam -->
+      <g class="laser-beam">
+        <rect class="laser-glow" x="-8" y="0" width="16" height="300"/>
+        <rect class="laser-core" x="-1" y="0" width="2" height="300"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C300,50 900,-10 1200,20 L1200,40 L0,40 Z"/></svg>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="section-head">
+        <h2>What inkora is about</h2>
+      </div>
+      <div>
+        <p>Swap this paragraph for the real story — how the studio started, what it believes about the work, and why that matters to the people reading this page.</p>
+        <p>A second short paragraph can carry a concrete detail: a number, a year, a place — something specific rather than general.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What we offer</h2>
+      <!--<p>Three lines here is plenty — resist the urge to pad this out into a grid of icons.</p> -->
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <h3>Custom Wall Murals</h3>
+        <p>Transform blank walls into stunning visual features with bespoke artwork, photography, branding, and decorative designs tailored to your space.</p>
+      </div>
+      <div class="service-row">
+        <h3>Business Branding Solutions</h3>
+        <p>Make a lasting impression with large-format logos, graphics, and branded environments that strengthen your identity and engage customers.</p>
+      </div>
+      <div class="service-row">
+        <h3>Residential Wall Art</h3>
+        <p>Bring your favourite images, artwork, and personal memories to life with custom wall murals designed to reflect your style.</p>
+      </div>
+      <div class="service-row">
+        <h3>Floor Graphics & Wayfinding</h3>
+        <p>Enhance customer experiences with durable floor graphics, promotional designs, directional signage, and creative visual solutions that stand out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recent work</h2>
+      <p>Replace these placeholders with real project images.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-item">TBC</div>
+      <div class="work-item">TBC</div>
+      <div class="work-item">Project 3</div>
+    </div>
+  </div>
+</section> -->
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Let's talk</h2>
+        <p style="margin-top:14px;">One line inviting the visitor to reach out — keep it direct, no filler.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Wire this up to your form handler or email service.');">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit" class="btn-primary">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 inkora</span>
+    <span>Melbourne, Australia</span>
+  </div>
+</footer>
+
+</body>
+</html>
