@@ -186,7 +186,7 @@
 
 <header>
   <div class="nav">
-    <img src="images/inkora-horizontal-navy-1200w.png" x="5" y="2" width="150" height="50"/>
+    <img src="/Users/muralidharan.jaganathan/Downloads/inkora-horizontal-navy-1200w.png" x="5" y="2" width="150" height="50"/>
     <!--<a href="#" class="wordmark">Ink<span>ora</span></a> -->
     <nav>
       <ul>
@@ -225,7 +225,7 @@
       <!-- placeholder picture — replace with a real photo, e.g.:
            <image href="your-photo.jpg" x="40" y="30" width="340" height="220" preserveAspectRatio="xMidYMid slice"/> -->
       <g class="wall-picture" clip-path="url(#printClip)">
-        <image href="images/429e0856-925c-44b9-bcce-687f03c9ecfa.JPG" x="40" y="30" width="360" height="250" preserveAspectRatio="xMidYMid slice"/>
+        <image href="/Users/muralidharan.jaganathan/Downloads/429e0856-925c-44b9-bcce-687f03c9ecfa.JPG" x="40" y="30" width="360" height="250" preserveAspectRatio="xMidYMid slice"/>
         <!--<rect x="40" y="30" width="340" height="220" fill="var(--paper)"/>
         <circle cx="130" cy="95" r="22" fill="var(--indigo)" opacity=".85"/>
         <path d="M40,220 L150,120 L210,175 L280,90 L380,220 Z" fill="var(--teal)" opacity=".8"/>
@@ -304,11 +304,35 @@
       <div>
         <h2>Let's talk</h2>
         <p style="margin-top:14px;">One line inviting the visitor to reach out — keep it direct, no filler.</p>
+
+        <div class="follow-us">
+          <h3>Follow us</h3>
+          <div class="social-links">
+            <a href="https://www.instagram.com/inkora.au" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="igGradientContact" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#feda75"/>
+                    <stop offset="15%" stop-color="#fa7e1e"/>
+                    <stop offset="45%" stop-color="#d62976"/>
+                    <stop offset="75%" stop-color="#962fbf"/>
+                    <stop offset="100%" stop-color="#4f5bd5"/>
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGradientContact)"/>
+                <rect x="7" y="7" width="10" height="10" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/>
+                <circle cx="12" cy="12" r="3" fill="none" stroke="#fff" stroke-width="1.6"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="#fff"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-      <form onsubmit="event.preventDefault(); alert('Wire this up to your form handler or email service.');">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message" required></textarea>
+      <form action="https://formspree.io/f/xzeblyrd" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="mobile" name="placeholder" placeholder="Mobile" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
         <button type="submit" class="btn-primary">Send message</button>
       </form>
     </div>
